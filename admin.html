@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🛡️ Admin Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-gray-100 via-blue-100 to-indigo-200 min-h-screen p-6 font-sans">
+
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-4xl font-bold text-center text-gray-800 mb-6">🛡️ Admin Dashboard – Pending Approvals</h1>
+
+    <div class="flex justify-end mb-4">
+      <button onclick="clearAllEvents()" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition">🧹 Clear All Events</button>
+    </div>
+
+    <div id="admin-container" class="space-y-4">
+      <p class="text-center text-gray-600">Loading events...</p>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

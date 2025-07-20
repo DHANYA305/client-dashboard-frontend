@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🗂️ Approved & Rejected Events</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-r from-green-100 via-purple-100 to-red-100 min-h-screen p-6 font-sans">
+
+  <h1 class="text-3xl font-bold text-center mb-6 text-gray-800">🗂️ Approved & Rejected Events</h1>
+
+  <div id="status-container" class="space-y-4 max-w-3xl mx-auto">
+    Loading...
+  </div>
+
+  <script>
+    fetch("http://localhost:5002/events")
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("status-container");
+        container.innerHTML = "";
+
+        const filtered = data.events.filter(e => e.status === "approved" || e.status === "rejected");
+
+        if (filtered.length === 0) {
+          container.innerHTML = "<p class='text-center text-gray-600'>No approved or rejected events yet.</p>";
+          return;
+        }
+
+        filtered.forEach(event => {
+          const card = document.createElement("div");
+          const color = event.status === "approved" ? "bg-green-200 border-green-600" : "bg-red-200 border-red-600";
+          const statusColor = event.status === "approved" ? "text-green-800" : "text-red-800";
+
+          card.className = `border-l-4 p-4 rounded shadow ${color}`;
+          card.innerHTML = `
+            <h3 class="text-xl font-semibold text-gray-800 mb-1">${event.title}</h3>
+            <p class="text-gray-700 mb-2">${event.description}</p>
+            <span class="font-bold ${statusColor} uppercase">Status: ${event.status}</span>
+          `;
+          container.appendChild(card);
+        });
+      });
+  </script>
+
+</body>
+</html>
