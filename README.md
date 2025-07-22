@@ -56,6 +56,6 @@ Admin Panel
 
 **Solo Developer**  
 Name: Dhanya Bhandari
-Email: dhanyabhandari30@gmail.com  
+
 Role: Solo Developer (End-to-End Implementation)– Frontend, Backend, Deployment, Visual Design
 
